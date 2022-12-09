@@ -13,6 +13,7 @@ Driver = namedtuple('Driver', [
     'salt',
     'password_hash'
 
+
 ])
 
 
@@ -21,7 +22,7 @@ def connect():
         connection = psycopg2.connect(user=DATABASE['USER'],
                                       # пароль, который указали при установке PostgresSQL
                                       password=DATABASE['PASSWORD'],
-                                      host="127.0.0.1",
+                                      host=DATABASE['HOST'],
                                       port="5432",
                                       dbname=DATABASE['NAME'])
         return connection
@@ -65,6 +66,9 @@ async def get_user_db(login):
 
     else:
         print("проблемы с подключением к базе")
+
+async def get_user_chat_id(chat_id):
+    pass
 
 
 # Регистрация пользователя в базе
